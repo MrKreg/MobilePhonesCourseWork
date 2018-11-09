@@ -1,20 +1,42 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2019
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MobilePhonesCourseWork", "MobilePhonesCourseWork\MobilePhonesCourseWork.vcxproj", "{A80B42B5-D1C4-49FE-A4FA-6FDCFA13807F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{797EA4EB-EC3E-4B99-BAB9-6140BFA502D1} = {797EA4EB-EC3E-4B99-BAB9-6140BFA502D1}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MobilePhonesCourseWork.DAL", "MobilePhonesCourseWork.DAL\MobilePhonesCourseWork.DAL.vcxproj", "{797EA4EB-EC3E-4B99-BAB9-6140BFA502D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
 		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A80B42B5-D1C4-49FE-A4FA-6FDCFA13807F}.Debug|Win32.ActiveCfg = Debug|Win32
 		{A80B42B5-D1C4-49FE-A4FA-6FDCFA13807F}.Debug|Win32.Build.0 = Debug|Win32
+		{A80B42B5-D1C4-49FE-A4FA-6FDCFA13807F}.Debug|x64.ActiveCfg = Debug|Win32
 		{A80B42B5-D1C4-49FE-A4FA-6FDCFA13807F}.Release|Win32.ActiveCfg = Release|Win32
 		{A80B42B5-D1C4-49FE-A4FA-6FDCFA13807F}.Release|Win32.Build.0 = Release|Win32
+		{A80B42B5-D1C4-49FE-A4FA-6FDCFA13807F}.Release|x64.ActiveCfg = Release|Win32
+		{797EA4EB-EC3E-4B99-BAB9-6140BFA502D1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{797EA4EB-EC3E-4B99-BAB9-6140BFA502D1}.Debug|Win32.Build.0 = Debug|Win32
+		{797EA4EB-EC3E-4B99-BAB9-6140BFA502D1}.Debug|x64.ActiveCfg = Debug|x64
+		{797EA4EB-EC3E-4B99-BAB9-6140BFA502D1}.Debug|x64.Build.0 = Debug|x64
+		{797EA4EB-EC3E-4B99-BAB9-6140BFA502D1}.Release|Win32.ActiveCfg = Release|Win32
+		{797EA4EB-EC3E-4B99-BAB9-6140BFA502D1}.Release|Win32.Build.0 = Release|Win32
+		{797EA4EB-EC3E-4B99-BAB9-6140BFA502D1}.Release|x64.ActiveCfg = Release|x64
+		{797EA4EB-EC3E-4B99-BAB9-6140BFA502D1}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E931A4BB-9848-44F6-BD36-346AD0F841CB}
 	EndGlobalSection
 EndGlobal
