@@ -23,7 +23,7 @@ namespace Entities {
 			this->name = name;
 			this->email = email;
 			this->owner = owner;
-			this->country;
+			this->country = country;
 		}
 
 		Creator(int id, String^ name, String^ email, String^ owner, String^ country) :Creator(name, email, owner, country)
@@ -38,7 +38,7 @@ namespace Entities {
 
 		String^ GetName()
 		{
-			return this->name = name;
+			return this->name;
 		}
 
 		String^ GetEmail()

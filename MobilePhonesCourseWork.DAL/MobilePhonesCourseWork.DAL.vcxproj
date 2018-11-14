@@ -128,8 +128,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="MobilePhonesCourseWork.DAL.h" />
+    <ClInclude Include="Creator.h" />
+    <ClInclude Include="Feature.h" />
+    <ClInclude Include="ICreatorRepository.h" />
+    <ClInclude Include="IFeatureRepository.h" />
+    <ClInclude Include="IOsRepository.h" />
+    <ClInclude Include="IPhoneHasFeatureRepository.h" />
+    <ClInclude Include="IPhoneRepository.h" />
+    <ClInclude Include="IProcessorRepository.h" />
+    <ClInclude Include="IShopHasPhoneRepository.h" />
+    <ClInclude Include="IShopRepository.h" />
+    <ClInclude Include="OS.h" />
+    <ClInclude Include="OsDBRepository.h" />
+    <ClInclude Include="Phone.h" />
+    <ClInclude Include="PhoneHasFeature.h" />
+    <ClInclude Include="Processor.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Shop.h" />
+    <ClInclude Include="ShopHasPhone.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
