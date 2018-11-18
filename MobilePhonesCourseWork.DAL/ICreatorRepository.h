@@ -15,6 +15,5 @@ namespace Repositories {
 		virtual List<Creator^>^ GetAllCreators() = 0;
 		virtual Creator^ GetCreatorById(int id) = 0;
 		virtual List<Creator^>^ GetCreatorByName(String^ name) = 0;
-		virtual List<Creator^>^ GetCreatorByCountry(String^ country) = 0;
 	};
 }

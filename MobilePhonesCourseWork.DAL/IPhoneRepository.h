@@ -1,6 +1,5 @@
 #pragma once
 #include "Phone.h"
-#include "Creator.h"
 
 using namespace System;
 using namespace Entities;
@@ -10,11 +9,11 @@ namespace Repositories {
 	public ref class IPhoneRepository
 	{
 	public:
-		virtual bool InsertPhone(Phone^ Phone) = 0;
-		virtual bool UpdatePhone(Phone^ Phone) = 0;
-		virtual bool DeletePhone(Phone^ Phone) = 0;
+		virtual bool InsertPhone(Phone^ phone) = 0;
+		virtual bool UpdatePhone(Phone^ phone) = 0;
+		virtual bool DeletePhone(Phone^ phone) = 0;
 		virtual List<Phone^>^ GetAllPhones() = 0;
 		virtual Phone^ GetPhoneById(int id) = 0;
-		virtual List<Phone^>^ GetPhoneByName(String^ name) = 0;
+		virtual List<Phone^>^ GetPhoneByModel(String^ model) = 0;
 	};
 }

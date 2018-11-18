@@ -44,7 +44,8 @@ namespace Repositories {
 			String^ query = "UPDATE dbo.os SET name=@name, description=@description, create_year=@create_year WHERE id=@id";
 			SqlCommand^ command = gcnew SqlCommand(query, connection);
 			command->Parameters->Add(gcnew SqlParameter("@id", os->GetId()));
-			command->Parameters->Add(gcnew SqlParameter("@name", os->GetDescription()));
+			command->Parameters->Add(gcnew SqlParameter("@name", os->GetName()));
+			command->Parameters->Add(gcnew SqlParameter("@description", os->GetDescription()));
 			command->Parameters->Add(gcnew SqlParameter("@create_year", os->GetCreateYear()));
 			if (command->ExecuteNonQuery() == 0)
 			{
@@ -108,6 +109,7 @@ namespace Repositories {
 			reader->Close();
 			return list;
 		}
+
 	private:
 		String^ CONNECTION_STRING = "Server=(localdb)\\mssqllocaldb;Database=mobile_phones;Trusted_Connection=True;";
 		SqlConnection^ connection;
