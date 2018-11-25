@@ -8,14 +8,17 @@ namespace Entities {
 	private:
 		int id;
 		int creatorId;
+		String^ creatorName;
 		String^ model;
 		int processorId;
+		String^ processorName;
 		int storage;
 		int ram;
 		String^ resolution;
 		String^ screenSize;
 		String^ screenType;
 		int osId;
+		String^ osName;
 
 	public:
 		Phone()
@@ -23,20 +26,23 @@ namespace Entities {
 
 		}
 
-		Phone(int creatorId, String^ model, int processorId, int storage, int ram, String^ resolution, String^ screenSize, String^ screenType, int osId)
+		Phone(int creatorId, String^ creatorName, String^ model, int processorId, String^ processorName, int storage, int ram, String^ resolution, String^ screenSize, String^ screenType, int osId, String^ osName)
 		{
 			this->creatorId = creatorId;
+			this->creatorName = creatorName;
 			this->model = model;
 			this->processorId = processorId;
+			this->processorName = processorName;
 			this->storage = storage;
 			this->ram = ram;
 			this->resolution = resolution;
 			this->screenSize = screenSize;
 			this->screenType = screenType;
 			this->osId = osId;
+			this->osName = osName;
 		}
 
-		Phone(int id, int creatorId, String^ model, int processorId, int storage, int ram, String^ resolution, String^ screenSize, String^ screenType, int osId) :Phone(creatorId, model, processorId, storage, ram, resolution, screenSize, screenType, osId)
+		Phone(int id, int creatorId, String^ creatorName, String^ model, int processorId, String^ processorName, int storage, int ram, String^ resolution, String^ screenSize, String^ screenType, int osId, String^ osName) :Phone(creatorId, creatorName, model, processorId, processorName, storage, ram, resolution, screenSize, screenType, osId, osName)
 		{
 			this->id = id;
 		}
@@ -51,6 +57,11 @@ namespace Entities {
 			return this->creatorId;
 		}
 
+		String^ GetCreatorName()
+		{
+			return this->creatorName;
+		}
+
 		String^ GetModel()
 		{
 			return this->model;
@@ -59,6 +70,11 @@ namespace Entities {
 		int GetProcessorId()
 		{
 			return this->processorId;
+		}
+
+		String^ GetProcessorName()
+		{
+			return this->processorName;
 		}
 
 		int GetStorage()
@@ -89,6 +105,11 @@ namespace Entities {
 		int GetOsId()
 		{
 			return this->osId;
+		}
+
+		String^ GetOsName()
+		{
+			return this->osName;
 		}
 
 		void SetId(int id)

@@ -79,12 +79,28 @@ namespace Repositories {
 			return true;
 		}
 
-		List<Phone^>^ GetAllPhones()
+		List<Phone^>^ GetAllPhones() override
+		{
+			List<Phone^>^ list = gcnew List<Phone^>();
+			String^ query = "SELECT phone.*, creator.name, processor.name, os.name FROM phone \
+				INNER JOIN creator ON creator.id = creator_id \
+				INNER JOIN processor ON processor.id = processor_id \
+				INNER JOIN os ON os.id = os_id"; 
+			SqlCommand^ command = gcnew SqlCommand(query, connection);
+			SqlDataReader^ reader = command->ExecuteReader();
+			while (reader->Read())
+			{
+				list->Add(gcnew Phone(reader->GetInt32(0), reader->GetInt32(1), reader->GetString(10), reader->GetString(2), reader->GetInt32(3), reader->GetString(11), reader->GetInt32(4), reader->GetInt32(5), reader->GetString(6), reader->GetString(7), reader->GetString(8), reader->GetInt32(9), reader->GetString(12)));
+			}
+			reader->Close();
+			return list;
+		}
+
+		Phone^ GetPhoneById(int id) override
 		{
 
 		}
 
-		virtual Phone^ GetPhoneById(int id) = 0;
 		virtual List<Phone^>^ GetPhoneByName(String^ name) = 0;
 
 	private:

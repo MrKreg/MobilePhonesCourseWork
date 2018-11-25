@@ -8,7 +8,9 @@ namespace Entities {
 	private:
 		int id;
 		int phoneId;
+		String^ phoneName;
 		int shopId;
+		String^ shopName;
 		int price;
 		int shippingCost;
 		int available;
@@ -19,16 +21,18 @@ namespace Entities {
 
 		}
 
-		ShopHasPhone(int phoneId, int shopId, int price, int shippingCost, int available)
+		ShopHasPhone(int phoneId, String^ phoneName, int shopId, String^ shopName, int price, int shippingCost, int available)
 		{
 			this->phoneId = phoneId;
+			this->phoneName = phoneName;
 			this->shopId = shopId;
+			this->shopName = shopName;
 			this->price = price;
 			this->shippingCost = shippingCost;
 			this->available = available;
 		}
 
-		ShopHasPhone(int id, int phoneId, int shopId, int price, int shippingCost, int available) :ShopHasPhone(phoneId, shopId, price, shippingCost, available)
+		ShopHasPhone(int id, int phoneId, String^ phoneName, int shopId, String^ shopName, int price, int shippingCost, int available) :ShopHasPhone(phoneId, phoneName, shopId, shopName, price, shippingCost, available)
 		{
 			this->id = id;
 		}
@@ -43,9 +47,19 @@ namespace Entities {
 			return this->phoneId;
 		}
 
+		String^ GetPhoneName()
+		{
+			return this->phoneName;
+		}
+
 		int GetShopId()
 		{
 			return this->shopId;
+		}
+
+		String^ GetShopName()
+		{
+			return this->shopName;
 		}
 
 		int GetPrice()
@@ -73,12 +87,22 @@ namespace Entities {
 			this->phoneId = phoneId;
 		}
 
+		void SetPhoneName(String^ phoneName)
+		{
+			this->phoneName = phoneName;
+		}
+
 		void SetShopId(int shopId)
 		{
 			this->shopId = shopId;
 		}
 
-		void SetPrice(int Price)
+		void SetPhoneName(String^ phoneName)
+		{
+			this->phoneName = phoneName;
+		}
+
+		void SetPrice(int price)
 		{
 			this->price = price;
 		}

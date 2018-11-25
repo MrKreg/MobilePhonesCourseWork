@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Entities">
+      <UniqueIdentifier>{8285e721-a41e-45fa-8170-49ceac184e2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interfaces">
+      <UniqueIdentifier>{10db7f23-778c-43bc-b63e-9ff05b5a3692}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DBRepositories">
+      <UniqueIdentifier>{f8a5d801-0dcd-4416-9258-a9aa04a64f5f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -21,68 +30,68 @@
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OS.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Creator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Processor.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Feature.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="OS.h">
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Shop.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Phone.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="ShopHasPhone.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Phone.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Processor.h">
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="PhoneHasFeature.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="ICreatorRepository.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IOsRepository.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IProcessorRepository.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IShopRepository.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="IFeatureRepository.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IOsRepository.h">
+      <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="IPhoneRepository.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="IPhoneHasFeatureRepository.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IProcessorRepository.h">
+      <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="IShopHasPhoneRepository.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="OsDBRepository.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="IShopRepository.h">
+      <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="CreatorDBRepository.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\DBRepositories</Filter>
     </ClInclude>
     <ClInclude Include="FeatureDBRepository.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\DBRepositories</Filter>
     </ClInclude>
-    <ClInclude Include="ShopDBRepository.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="OsDBRepository.h">
+      <Filter>Header Files\DBRepositories</Filter>
     </ClInclude>
     <ClInclude Include="PhoneDBRepository.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\DBRepositories</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopDBRepository.h">
+      <Filter>Header Files\DBRepositories</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -96,7 +105,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ProcessorDBRepository.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\DBRepositories</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
