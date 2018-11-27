@@ -2,7 +2,7 @@
 #include "OS.h"
 
 using namespace System;
-using namespace Enteties;
+using namespace Entities;
 using namespace System::Collections::Generic;
 
 namespace Repositories {

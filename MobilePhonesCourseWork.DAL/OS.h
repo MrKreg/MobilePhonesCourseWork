@@ -2,7 +2,7 @@
 
 using namespace System;
 
-namespace Enteties {
+namespace Entities {
 	ref class OS
 	{
 	private:

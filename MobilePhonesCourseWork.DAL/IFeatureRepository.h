@@ -15,5 +15,6 @@ namespace Repositories {
 		virtual List<Feature^>^ GetAllFeatures() = 0;
 		virtual Feature^ GetFeatureById(int id) = 0;
 		virtual List<Feature^>^ GetFeatureByName(String^ name) = 0;
+		virtual List<Feature^>^ GetFeatureByPhoneId(int phone_id) = 0;
 	};
 }

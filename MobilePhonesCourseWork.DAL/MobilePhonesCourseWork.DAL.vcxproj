@@ -135,7 +135,6 @@
     <ClInclude Include="ICreatorRepository.h" />
     <ClInclude Include="IFeatureRepository.h" />
     <ClInclude Include="IOsRepository.h" />
-    <ClInclude Include="IPhoneHasFeatureRepository.h" />
     <ClInclude Include="IPhoneRepository.h" />
     <ClInclude Include="IProcessorRepository.h" />
     <ClInclude Include="IShopHasPhoneRepository.h" />
@@ -144,13 +143,14 @@
     <ClInclude Include="OsDBRepository.h" />
     <ClInclude Include="Phone.h" />
     <ClInclude Include="PhoneDBRepository.h" />
-    <ClInclude Include="PhoneHasFeature.h" />
     <ClInclude Include="Processor.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Shop.h" />
     <ClInclude Include="ShopDBRepository.h" />
     <ClInclude Include="ShopHasPhone.h" />
+    <ClInclude Include="ShopHasPhoneDBRepository.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="UnitOfWork.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />

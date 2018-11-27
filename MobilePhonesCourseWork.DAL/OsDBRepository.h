@@ -2,7 +2,7 @@
 #include "IOsRepository.h"
 #include "OS.h"
 
-using namespace Enteties;
+using namespace Entities;
 using namespace System;
 using namespace System::Data::SqlClient;
 
@@ -10,9 +10,9 @@ namespace Repositories {
 	ref class OsDBReopistory : public IOsRepository
 	{
 	public:
-		OsDBReopistory()
+		OsDBReopistory(SqlConnection^ connection)
 		{
-			this->connection = gcnew SqlConnection(this->CONNECTION_STRING);
+			this->connection = connection;
 			this->connection->Open();
 		}
 
@@ -111,7 +111,6 @@ namespace Repositories {
 		}
 
 	private:
-		String^ CONNECTION_STRING = "Server=(localdb)\\mssqllocaldb;Database=mobile_phones;Trusted_Connection=True;";
 		SqlConnection^ connection;
 	};
 }

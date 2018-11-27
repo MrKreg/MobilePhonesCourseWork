@@ -11,9 +11,9 @@ namespace Repositories
 	ref class FeatureDBRepository:IFeatureRepository
 	{
 	public:
-		FeatureDBRepository()
+		FeatureDBRepository(SqlConnection^ connection)
 		{
-			this->connection = gcnew SqlConnection(this->CONNECTION_STRING);
+			this->connection = connection;
 			this->connection->Open();
 		}
 
@@ -110,8 +110,24 @@ namespace Repositories
 			return list;
 		}
 
+		List<Feature^>^ GetFeatureByPhoneId(int phone_id) override
+		{
+			List<Feature^>^ list = gcnew List<Feature^>();
+			String^ query = "SELECT features.* FROM features \
+				INNER JOIN phone_has_features ON features_id = features.id \
+				WHERE phone_has_features.phone_id = @phone_id";
+			SqlCommand^ command = gcnew SqlCommand(query, connection);
+			command->Parameters->Add(gcnew SqlParameter("@phone_id", phone_id));
+			SqlDataReader^ reader = command->ExecuteReader();
+			while (reader->Read())
+			{
+				list->Add(gcnew Feature(reader->GetInt32(0), reader->GetString(1), reader->GetString(2)));
+			}
+			reader->Close();
+			return list;
+		}
+
 	private:
-		String^ CONNECTION_STRING = "Server=(localdb)\\mssqllocaldb;Database=mobile_phones;Trusted_Connection=True;";
 		SqlConnection^ connection;
 	};
 }

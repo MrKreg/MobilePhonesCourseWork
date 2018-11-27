@@ -1,6 +1,7 @@
 #pragma once
 #include "Phone.h"
 #include "IPhoneRepository.h"
+#include "Feature.h"
 
 using namespace System;
 using namespace Entities;
@@ -98,10 +99,33 @@ namespace Repositories {
 
 		Phone^ GetPhoneById(int id) override
 		{
-
+			Phone^ item = nullptr;
+			String^ query = "SELECT phone.*, creator.name, processor.name, os.name FROM dbo.phone WHERE dbo.phone.id = @id";
+			SqlCommand^ command = gcnew SqlCommand(query, connection);
+			command->Parameters->Add(gcnew SqlParameter("@id", id));
+			SqlDataReader^ reader = command->ExecuteReader();
+			if (reader->Read())
+			{
+				item = gcnew Phone(reader->GetInt32(0), reader->GetInt32(1), reader->GetString(10), reader->GetString(2), reader->GetInt32(3), reader->GetString(11), reader->GetInt32(4), reader->GetInt32(5), reader->GetString(6), reader->GetString(7), reader->GetString(8), reader->GetInt32(9), reader->GetString(12));
+			}
+			reader->Close();
+			return item;
 		}
 
-		virtual List<Phone^>^ GetPhoneByName(String^ name) = 0;
+		List<Phone^>^ GetPhoneByName(String^ name) override
+		{
+			List<Phone^>^ list = gcnew List<Phone^>();
+			String^ query = "SELECT phone.*, creator.name, processor.name, os.name FROM dbo.phone WHERE model LIKE '%'@name'%'";
+			SqlCommand^ command = gcnew SqlCommand(query, connection);
+			command->Parameters->Add(gcnew SqlParameter("@name", name));
+			SqlDataReader^ reader = command->ExecuteReader();
+			while (reader->Read())
+			{
+				list->Add(gcnew Phone(reader->GetInt32(0), reader->GetInt32(1), reader->GetString(10), reader->GetString(2), reader->GetInt32(3), reader->GetString(11), reader->GetInt32(4), reader->GetInt32(5), reader->GetString(6), reader->GetString(7), reader->GetString(8), reader->GetInt32(9), reader->GetString(12)));
+			}
+			reader->Close();
+			return list;
+		}
 
 	private:
 		String^ CONNECTION_STRING = "Server=(localdb)\\mssqllocaldb;Database=mobile_phones;Trusted_Connection=True;";

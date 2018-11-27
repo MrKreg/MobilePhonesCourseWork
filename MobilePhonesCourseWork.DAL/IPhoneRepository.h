@@ -14,6 +14,6 @@ namespace Repositories {
 		virtual bool DeletePhone(Phone^ phone) = 0;
 		virtual List<Phone^>^ GetAllPhones() = 0;
 		virtual Phone^ GetPhoneById(int id) = 0;
-		virtual List<Phone^>^ GetPhoneByModel(String^ model) = 0;
+		virtual List<Phone^>^ GetPhoneByName(String^ name) = 0;
 	};
 }

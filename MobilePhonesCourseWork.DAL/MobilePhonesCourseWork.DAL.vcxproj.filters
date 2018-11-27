@@ -51,9 +51,6 @@
     <ClInclude Include="Processor.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="PhoneHasFeature.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="ICreatorRepository.h">
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
@@ -64,9 +61,6 @@
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="IPhoneRepository.h">
-      <Filter>Header Files\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="IPhoneHasFeatureRepository.h">
       <Filter>Header Files\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="IProcessorRepository.h">
@@ -92,6 +86,12 @@
     </ClInclude>
     <ClInclude Include="ShopDBRepository.h">
       <Filter>Header Files\DBRepositories</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopHasPhoneDBRepository.h">
+      <Filter>Header Files\DBRepositories</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitOfWork.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
