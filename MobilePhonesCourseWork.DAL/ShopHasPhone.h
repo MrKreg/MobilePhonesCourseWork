@@ -74,7 +74,7 @@ namespace Entities {
 
 		int GetAvailable()
 		{
-			this->available;
+			return this->available;
 		}
 
 		void SetId(int id)
@@ -97,9 +97,9 @@ namespace Entities {
 			this->shopId = shopId;
 		}
 
-		void SetPhoneName(String^ phoneName)
+		void SetShopName(String^ shopName)
 		{
-			this->phoneName = phoneName;
+			this->shopName = shopName;
 		}
 
 		void SetPrice(int price)

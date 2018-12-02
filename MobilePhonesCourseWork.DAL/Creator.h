@@ -5,7 +5,7 @@ using namespace System;
 namespace Entities {
 	ref class Creator
 	{
-	private:
+	public:
 		int id;
 		String^ name;
 		String^ email;
@@ -79,6 +79,10 @@ namespace Entities {
 		void SetCountry(String^ country)
 		{
 			this->country = country;
+		}
+
+		String^ ToString() override {
+			return this->name->Trim();
 		}
 	};
 }

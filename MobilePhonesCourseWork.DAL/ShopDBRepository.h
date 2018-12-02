@@ -11,15 +11,13 @@ namespace Repositories
 	ref class ShopDBRepository:IShopRepository
 	{
 	public:
-		ShopDBRepository()
+		ShopDBRepository(SqlConnection^ connection)
 		{
-			this->connection = gcnew SqlConnection(this->CONNECTION_STRING);
-			this->connection->Open();
+			this->connection = connection;
 		}
 
 		~ShopDBRepository()
 		{
-			this->connection->Close();
 		}
 
 		bool InsertShop(Shop^ shop) override

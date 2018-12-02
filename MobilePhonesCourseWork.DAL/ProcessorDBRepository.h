@@ -11,15 +11,13 @@ namespace Repositories {
 	ref class ProcessorDBRepository:IProcessorRepository
 	{
 	public:
-		ProcessorDBRepository()
+		ProcessorDBRepository(SqlConnection^ connection)
 		{
-			this->connection = gcnew SqlConnection(this->CONNECTION_STRING);
-			this->connection->Open();
+			this->connection = connection;
 		}
 
 		~ProcessorDBRepository()
 		{
-			this->connection->Close();
 		}
 
 		bool InsertProcessor(Processor^ processor) override

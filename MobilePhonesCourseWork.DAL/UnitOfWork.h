@@ -19,10 +19,12 @@ namespace Repositories
 		UnitOfWork()
 		{
 			this->connection = gcnew SqlConnection(this->CONNECTION_STRING);
+			connection->Open();
 		}
 
 		~UnitOfWork()
 		{
+			connection->Close();
 		}
 
 		OsDBReopistory^ Os()
@@ -34,6 +36,15 @@ namespace Repositories
 			return osRepository;
 		}
 
+		CreatorDBRepository^ Creator()
+		{
+			if (creatorRepository == nullptr)
+			{
+				creatorRepository = gcnew CreatorDBRepository(this->connection);
+			}
+			return creatorRepository;
+		}
+
 		FeatureDBRepository^ Feature()
 		{
 			if (featureRepository == nullptr)
@@ -41,6 +52,42 @@ namespace Repositories
 				featureRepository = gcnew FeatureDBRepository(this->connection);
 			}
 			return featureRepository;
+		}
+
+		PhoneDBRepository^ Phone()
+		{
+			if (phoneRepository == nullptr)
+			{
+				phoneRepository = gcnew PhoneDBRepository(this->connection);
+			}
+			return phoneRepository;
+		}
+
+		ProcessorDBRepository^ Processor()
+		{
+			if (processorRepository == nullptr)
+			{
+				processorRepository = gcnew ProcessorDBRepository(this->connection);
+			}
+			return processorRepository;
+		}
+
+		ShopDBRepository^ Shop()
+		{
+			if (shopRepository == nullptr)
+			{
+				shopRepository = gcnew ShopDBRepository(this->connection);
+			}
+			return shopRepository;
+		}
+
+		ShopHasPhoneDBRepository^ ShopHasPhone()
+		{
+			if (shopHasPhoneRepository == nullptr)
+			{
+				shopHasPhoneRepository = gcnew ShopHasPhoneDBRepository(this->connection);
+			}
+			return shopHasPhoneRepository;
 		}
 
 	private:

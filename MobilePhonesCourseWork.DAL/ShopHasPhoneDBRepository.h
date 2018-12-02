@@ -11,15 +11,13 @@ namespace Repositories
 	ref class ShopHasPhoneDBRepository : IShopHasPhoneRepository
 	{
 	public:
-		ShopHasPhoneDBRepository()
+		ShopHasPhoneDBRepository(SqlConnection^ connection)
 		{
-			this->connection = gcnew SqlConnection(this->CONNECTION_STRING);
-			this->connection->Open();
+			this->connection = connection;
 		}
 
 		~ShopHasPhoneDBRepository()
 		{
-			this->connection->Close();
 		}
 
 		bool InsertShopHasPhone(ShopHasPhone^ shopHasPhone) override
@@ -110,6 +108,10 @@ namespace Repositories
 			if (reader->Read())
 			{
 				item = reader->GetString(0);
+			}
+			else
+			{
+				item = "No info";
 			}
 			reader->Close();
 			return item;

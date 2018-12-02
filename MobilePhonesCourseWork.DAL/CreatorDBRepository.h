@@ -11,15 +11,13 @@ namespace Repositories
 	ref class CreatorDBRepository:ICreatorRepository
 	{
 	public:
-		CreatorDBRepository()
+		CreatorDBRepository(SqlConnection^ connection)
 		{
-			this->connection = gcnew SqlConnection(this->CONNECTION_STRING);
-			this->connection->Open();
+			this->connection = connection;
 		}
 
 		~CreatorDBRepository()
 		{
-			this->connection->Close();
 		}
 
 		bool InsertCreator(Creator^ creator) override

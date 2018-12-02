@@ -13,12 +13,10 @@ namespace Repositories {
 		OsDBReopistory(SqlConnection^ connection)
 		{
 			this->connection = connection;
-			this->connection->Open();
 		}
 
 		~OsDBReopistory()
 		{
-			this->connection->Close();
 		}
 
 		bool InsertOs(OS^ os) override

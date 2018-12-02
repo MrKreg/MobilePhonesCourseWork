@@ -14,12 +14,10 @@ namespace Repositories
 		FeatureDBRepository(SqlConnection^ connection)
 		{
 			this->connection = connection;
-			this->connection->Open();
 		}
 
 		~FeatureDBRepository()
 		{
-			this->connection->Close();
 		}
 
 		bool InsertFeature(Feature^ feature) override
