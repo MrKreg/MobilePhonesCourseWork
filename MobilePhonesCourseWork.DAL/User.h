@@ -18,7 +18,7 @@ namespace Entities {
 		User(String^ username, String^ password)
 		{
 			this->username = username;
-			SetPassword(password);
+			this->password = password;
 		}
 
 		String^ GetUsername()
@@ -29,6 +29,11 @@ namespace Entities {
 		String^ GetPassword()
 		{
 			return DecodeFrom64(this->password);
+		}
+
+		String^ GetEncodedPassword()
+		{
+			return this->password;
 		}
 
 		void SetUsername(String^ username)

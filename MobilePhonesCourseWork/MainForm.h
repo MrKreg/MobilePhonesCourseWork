@@ -1,6 +1,7 @@
 #pragma once
 #include "UnitOfWork.h"
 #include "PhoneDetail.h"
+#include "StuffForm.h"
 
 namespace MobilePhonesCourseWork {
 
@@ -19,18 +20,20 @@ namespace MobilePhonesCourseWork {
 	public ref class MainForm : public System::Windows::Forms::Form
 	{
 	public:
-		MainForm(void)
+		MainForm(UnitOfWork^ uow, bool isAdmin, String^ name)
 		{
 			InitializeComponent();
-			uow = gcnew UnitOfWork();
-			dateLabel = gcnew ToolStripLabel();
-			timeLabel = gcnew ToolStripLabel();
+			this->uow = uow;
+			this->isAdmin = isAdmin;
+			infoLabel->Text = "Welcome, " + name + "!";
+			if (!isAdmin)
+			{
+				button2->Hide();
+				button3->Hide();
+				button4->Hide();
+				button5->Hide();
+			}
 			statusStrip1->Items->Add(infoLabel);
-			statusStrip1->Items->Add(dateLabel);
-			statusStrip1->Items->Add(timeLabel);
-			//
-			//TODO: Add the constructor code here
-			//
 		}
 
 	protected:
@@ -59,6 +62,7 @@ namespace MobilePhonesCourseWork {
 	private: System::Windows::Forms::Panel^  panel1;
 	private: System::Windows::Forms::Label^  label1;
 	private: UnitOfWork^ uow;
+			 bool isAdmin;
 
 	private: System::Windows::Forms::CheckedListBox^  checkedListBox1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Id;
@@ -274,6 +278,7 @@ namespace MobilePhonesCourseWork {
 			this->button5->TabIndex = 5;
 			this->button5->Text = L"More";
 			this->button5->UseVisualStyleBackColor = false;
+			this->button5->Click += gcnew System::EventHandler(this, &MainForm::button5_Click);
 			// 
 			// button3
 			// 
@@ -486,6 +491,11 @@ namespace MobilePhonesCourseWork {
 		int phoneId = System::Convert::ToInt32(dataGridView1->Rows[dataGridView1->CurrentCell->RowIndex]->Cells[0]->Value);
 		PhoneDetail^ form = gcnew PhoneDetail(phoneId, uow);
 		form->ShowDialog();
+	}
+	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) 
+	{
+		StuffForm^ staff = gcnew StuffForm(uow);
+		staff->ShowDialog();
 	}
 };
 }

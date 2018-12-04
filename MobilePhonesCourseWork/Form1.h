@@ -1,5 +1,6 @@
 #pragma once
 #include "MainForm.h"
+#include "UnitOfWork.h"
 
 namespace MobilePhonesCourseWork {
 
@@ -19,9 +20,7 @@ namespace MobilePhonesCourseWork {
 		Form1(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+			uow = gcnew UnitOfWork();
 		}
 
 	protected:
@@ -43,6 +42,8 @@ namespace MobilePhonesCourseWork {
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
 	private: System::Windows::Forms::Button^  button2;
+			 UnitOfWork^ uow;
+	private: System::Windows::Forms::Label^  label3;
 
 	private:
 		/// <summary>
@@ -65,6 +66,7 @@ namespace MobilePhonesCourseWork {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -159,6 +161,17 @@ namespace MobilePhonesCourseWork {
 			this->button2->TabIndex = 4;
 			this->button2->Text = L"Cancel";
 			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &Form1::button2_Click);
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(231)), static_cast<System::Int32>(static_cast<System::Byte>(76)),
+				static_cast<System::Int32>(static_cast<System::Byte>(60)));
+			this->label3->Location = System::Drawing::Point(54, 216);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(0, 16);
+			this->label3->TabIndex = 6;
 			// 
 			// Form1
 			// 
@@ -167,7 +180,9 @@ namespace MobilePhonesCourseWork {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(54)), static_cast<System::Int32>(static_cast<System::Byte>(57)),
 				static_cast<System::Int32>(static_cast<System::Byte>(63)));
+			this->CancelButton = this->button2;
 			this->ClientSize = System::Drawing::Size(338, 284);
+			this->Controls->Add(this->label3);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
@@ -191,8 +206,27 @@ namespace MobilePhonesCourseWork {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		if (textBox1->Text->Length != 0 &&
+			textBox2->Text->Length != 0)
+		{
+			User^ user = uow->User()->GetUserByUsername(textBox1->Text);
+			if (user != nullptr && textBox2->Text->Equals(user->GetPassword()))
+			{
+				this->Hide();
+				MainForm^ form = gcnew MainForm(uow, true, user->GetUsername());
+				form->Show();
+			}
+			else
+			{
+				textBox1->Clear();
+				textBox2->Clear();
+				label3->Text = "Incorrect username or/and password!";
+			}
+		}
+	}
+	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->Hide();
-		MainForm^ form = gcnew MainForm();
+		MainForm^ form = gcnew MainForm(uow, false, "Guest");
 		form->Show();
 	}
 };

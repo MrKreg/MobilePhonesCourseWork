@@ -21,10 +21,10 @@ namespace Repositories {
 
 		bool InsertUser(User^ user)
 		{
-			String^ query = "INSERT INTO dbo.user (username, password) VALUES(@username, @password)";
+			String^ query = "INSERT INTO dbo.users (username, password) VALUES(@username, @password)";
 			SqlCommand^ command = gcnew SqlCommand(query, connection);
 			command->Parameters->Add(gcnew SqlParameter("@username", user->GetUsername()));
-			command->Parameters->Add(gcnew SqlParameter("@password", user->GetPassword()));
+			command->Parameters->Add(gcnew SqlParameter("@password", user->GetEncodedPassword()));
 			if (command->ExecuteNonQuery() == 0)
 			{
 				return false;
@@ -38,10 +38,10 @@ namespace Repositories {
 			if (user->GetPassword() == item->GetPassword()) {
 				return false;
 			}
-			String^ query = "UPDATE dbo.user SET password=@password WHERE username=@username";
+			String^ query = "UPDATE dbo.users SET password=@password WHERE username=@username";
 			SqlCommand^ command = gcnew SqlCommand(query, connection);
 			command->Parameters->Add(gcnew SqlParameter("@username", user->GetUsername()));
-			command->Parameters->Add(gcnew SqlParameter("@password", user->GetPassword()));
+			command->Parameters->Add(gcnew SqlParameter("@password", user->GetEncodedPassword()));
 			if (command->ExecuteNonQuery() == 0)
 			{
 				return false;
@@ -51,7 +51,7 @@ namespace Repositories {
 
 		bool DeleteOs(User^ user)
 		{
-			String^ query = "DELETE FROM dbo.user WHERE dbo.user.username = @username";
+			String^ query = "DELETE FROM dbo.users WHERE dbo.users.username = @username";
 			SqlCommand^ command = gcnew SqlCommand(query, connection);
 			command->Parameters->Add(gcnew SqlParameter("@username", user->GetUsername()));
 			if (command->ExecuteNonQuery() == 0)
@@ -64,7 +64,7 @@ namespace Repositories {
 		List<User^>^ GetAllUsers()
 		{
 			List<User^>^ list = gcnew List<User^>();
-			String^ query = "SELECT * FROM dbo.user";
+			String^ query = "SELECT * FROM dbo.users";
 			SqlCommand^ command = gcnew SqlCommand(query, connection);
 			SqlDataReader^ reader = command->ExecuteReader();
 			while (reader->Read())
@@ -78,7 +78,7 @@ namespace Repositories {
 		User^ GetUserByUsername(String^ username)
 		{
 			User^ item = nullptr;
-			String^ query = "SELECT * FROM dbo.username WHERE dbo.user.username = @username";
+			String^ query = "SELECT * FROM dbo.users WHERE dbo.users.username = @username";
 			SqlCommand^ command = gcnew SqlCommand(query, connection);
 			command->Parameters->Add(gcnew SqlParameter("@username", username));
 			SqlDataReader^ reader = command->ExecuteReader();

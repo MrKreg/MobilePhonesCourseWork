@@ -130,6 +130,9 @@
     <EmbeddedResource Include="PhoneDetail.resx">
       <DependentUpon>PhoneDetail.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="StuffForm.resx">
+      <DependentUpon>StuffForm.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
