@@ -1,5 +1,6 @@
 #pragma once
 #include "UnitOfWork.h"
+#include "PhoneDetail.h"
 
 namespace MobilePhonesCourseWork {
 
@@ -27,7 +28,6 @@ namespace MobilePhonesCourseWork {
 			statusStrip1->Items->Add(infoLabel);
 			statusStrip1->Items->Add(dateLabel);
 			statusStrip1->Items->Add(timeLabel);
-			dateLabel->Text
 			//
 			//TODO: Add the constructor code here
 			//
@@ -75,6 +75,11 @@ namespace MobilePhonesCourseWork {
 			 Timer^ timer;
 	private: System::Windows::Forms::StatusStrip^  statusStrip1;
 	private: System::Windows::Forms::ToolStripStatusLabel^  infoLabel;
+	private: System::Windows::Forms::Button^  button5;
+	private: System::Windows::Forms::Button^  button3;
+	private: System::Windows::Forms::Button^  button4;
+	private: System::Windows::Forms::Button^  button2;
+	private: System::Windows::Forms::Button^  button1;
 
 
 
@@ -109,6 +114,11 @@ namespace MobilePhonesCourseWork {
 			this->RAM = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Price = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->checkedListBox1 = (gcnew System::Windows::Forms::CheckedListBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -237,6 +247,11 @@ namespace MobilePhonesCourseWork {
 			// 
 			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(47)), static_cast<System::Int32>(static_cast<System::Byte>(49)),
 				static_cast<System::Int32>(static_cast<System::Byte>(54)));
+			this->panel1->Controls->Add(this->button5);
+			this->panel1->Controls->Add(this->button3);
+			this->panel1->Controls->Add(this->button4);
+			this->panel1->Controls->Add(this->button2);
+			this->panel1->Controls->Add(this->button1);
 			this->panel1->Controls->Add(this->textBox1);
 			this->panel1->Controls->Add(this->checkedListBox1);
 			this->panel1->Controls->Add(this->label2);
@@ -246,6 +261,72 @@ namespace MobilePhonesCourseWork {
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(143, 252);
 			this->panel1->TabIndex = 2;
+			// 
+			// button5
+			// 
+			this->button5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(66)), static_cast<System::Int32>(static_cast<System::Byte>(70)),
+				static_cast<System::Int32>(static_cast<System::Byte>(77)));
+			this->button5->FlatAppearance->BorderSize = 0;
+			this->button5->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button5->Location = System::Drawing::Point(78, 210);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(62, 23);
+			this->button5->TabIndex = 5;
+			this->button5->Text = L"More";
+			this->button5->UseVisualStyleBackColor = false;
+			// 
+			// button3
+			// 
+			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(66)), static_cast<System::Int32>(static_cast<System::Byte>(70)),
+				static_cast<System::Int32>(static_cast<System::Byte>(77)));
+			this->button3->FlatAppearance->BorderSize = 0;
+			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button3->Location = System::Drawing::Point(78, 181);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(62, 23);
+			this->button3->TabIndex = 5;
+			this->button3->Text = L"Remove";
+			this->button3->UseVisualStyleBackColor = false;
+			// 
+			// button4
+			// 
+			this->button4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(66)), static_cast<System::Int32>(static_cast<System::Byte>(70)),
+				static_cast<System::Int32>(static_cast<System::Byte>(77)));
+			this->button4->FlatAppearance->BorderSize = 0;
+			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button4->Location = System::Drawing::Point(6, 210);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(63, 23);
+			this->button4->TabIndex = 5;
+			this->button4->Text = L"Update";
+			this->button4->UseVisualStyleBackColor = false;
+			// 
+			// button2
+			// 
+			this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(66)), static_cast<System::Int32>(static_cast<System::Byte>(70)),
+				static_cast<System::Int32>(static_cast<System::Byte>(77)));
+			this->button2->FlatAppearance->BorderSize = 0;
+			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button2->Location = System::Drawing::Point(6, 181);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(63, 23);
+			this->button2->TabIndex = 5;
+			this->button2->Text = L"Add";
+			this->button2->UseVisualStyleBackColor = false;
+			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(66)), static_cast<System::Int32>(static_cast<System::Byte>(70)),
+				static_cast<System::Int32>(static_cast<System::Byte>(77)));
+			this->button1->FlatAppearance->BorderSize = 0;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->Location = System::Drawing::Point(6, 152);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(134, 23);
+			this->button1->TabIndex = 5;
+			this->button1->Text = L"Detail";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &MainForm::button1_Click);
 			// 
 			// textBox1
 			// 
@@ -325,6 +406,7 @@ namespace MobilePhonesCourseWork {
 			this->MainMenuStrip = this->menuStrip1;
 			this->MaximizeBox = false;
 			this->Name = L"MainForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"MainForm";
 			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &MainForm::MainForm_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
@@ -358,11 +440,6 @@ namespace MobilePhonesCourseWork {
 			this->dataGridView1->Rows[i]->Cells[6]->Value = uow->ShopHasPhone()->GetAvgPriceByPhoneId(item->GetId());
 			i++;
 		}
-	}
-	private:void timer_Tick(System::Object^ sender, EventArgs^ e)
-	{
-		DateTime^ now = gcnew DateTime();
-		dateLabel->Text = System::Convert::ToString(now->Now);
 	}
 	private:void CreatorFilter(List<Phone^>^ list)
 	{
@@ -404,6 +481,12 @@ namespace MobilePhonesCourseWork {
 	{
 		InitializeGridView(uow->Phone()->GetPhoneByName(textBox1->Text));
 		CreatorFilter(globalPhoneList);
+	}
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) 
+	{
+		int phoneId = System::Convert::ToInt32(dataGridView1->Rows[dataGridView1->CurrentCell->RowIndex]->Cells[0]->Value);
+		PhoneDetail^ form = gcnew PhoneDetail(phoneId, uow);
+		form->ShowDialog();
 	}
 };
 }

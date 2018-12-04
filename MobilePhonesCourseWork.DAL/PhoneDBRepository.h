@@ -99,7 +99,10 @@ namespace Repositories {
 		Phone^ GetPhoneById(int id) override
 		{
 			Phone^ item = nullptr;
-			String^ query = "SELECT phone.*, creator.name, processor.name, os.name FROM dbo.phone WHERE dbo.phone.id = @id";
+			String^ query = "SELECT phone.*, creator.name, processor.name, os.name FROM dbo.phone \
+				INNER JOIN creator ON creator.id = creator_id \
+				INNER JOIN processor ON processor.id = processor_id \
+				INNER JOIN os ON os.id = os_id WHERE dbo.phone.id = @id";
 			SqlCommand^ command = gcnew SqlCommand(query, connection);
 			command->Parameters->Add(gcnew SqlParameter("@id", id));
 			SqlDataReader^ reader = command->ExecuteReader();

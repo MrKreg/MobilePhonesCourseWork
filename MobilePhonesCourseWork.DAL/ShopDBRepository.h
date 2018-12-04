@@ -89,7 +89,7 @@ namespace Repositories
 			SqlDataReader^ reader = command->ExecuteReader();
 			if (reader->Read())
 			{
-				item = gcnew Shop(reader->GetInt32(0), reader->GetString(1), reader->GetDouble(2), reader->GetString(3));
+				item = gcnew Shop(reader->GetInt32(0), reader->GetString(1), (double)reader->GetDecimal(2), reader->GetString(3));
 			}
 			reader->Close();
 			return item;

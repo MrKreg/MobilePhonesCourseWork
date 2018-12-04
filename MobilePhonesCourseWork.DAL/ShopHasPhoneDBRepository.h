@@ -81,6 +81,23 @@ namespace Repositories
 			return list;
 		}
 
+		List<ShopHasPhone^>^ GetShopHasPhonesByPhoneId(int phoneId) override
+		{
+			List<ShopHasPhone^>^ list = gcnew List<ShopHasPhone^>();
+			String^ query = "SELECT shop_has_phone.*, phone.model, shop.name FROM shop_has_phone \
+				INNER JOIN phone ON phone.id = phone_id \
+				INNER JOIN shop ON shop.id = shop_id WHERE phone_id = @phoneId";
+			SqlCommand^ command = gcnew SqlCommand(query, connection);
+			command->Parameters->Add(gcnew SqlParameter("@phoneId", phoneId));
+			SqlDataReader^ reader = command->ExecuteReader();
+			while (reader->Read())
+			{
+				list->Add(gcnew ShopHasPhone(reader->GetInt32(0), reader->GetInt32(1), reader->GetString(6), reader->GetInt32(2), reader->GetString(7), reader->GetInt32(3), reader->GetInt32(4), reader->GetInt32(5)));
+			}
+			reader->Close();
+			return list;
+		}
+
 		ShopHasPhone^ GetShopHasPhoneById(int id) override
 		{
 			ShopHasPhone^ item = nullptr;
