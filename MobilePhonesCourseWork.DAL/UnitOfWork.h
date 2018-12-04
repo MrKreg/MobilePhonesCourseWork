@@ -6,6 +6,7 @@
 #include "ProcessorDBRepository.h"
 #include "ShopDBRepository.h"
 #include "ShopHasPhoneDBRepository.h"
+#include "UserDBRepository.h"
 
 using namespace System;
 using namespace Repositories;
@@ -90,6 +91,14 @@ namespace Repositories
 			return shopHasPhoneRepository;
 		}
 
+		UserDBRepository^ User()
+		{
+			if (userRepository == nullptr)
+			{
+				userRepository = gcnew UserDBRepository(this->connection);
+			}
+			return userRepository;
+		}
 	private:
 		String^ CONNECTION_STRING = "Server=(localdb)\\mssqllocaldb;Database=mobile_phones;Trusted_Connection=True;";
 		SqlConnection^ connection;
@@ -100,5 +109,6 @@ namespace Repositories
 		ProcessorDBRepository^ processorRepository = nullptr;
 		ShopDBRepository^ shopRepository = nullptr;
 		ShopHasPhoneDBRepository^ shopHasPhoneRepository = nullptr;
+		UserDBRepository^ userRepository = nullptr;
 	};
 }

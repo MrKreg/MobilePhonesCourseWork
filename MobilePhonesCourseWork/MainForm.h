@@ -466,7 +466,6 @@ namespace MobilePhonesCourseWork {
 	{
 		this->checkedListBox1->DataSource = uow->Creator()->GetAllCreators();
 		InitializeGridView(uow->Phone()->GetAllPhones());
-		//InitializeCreatorBox();
 	}
 	private: System::Void MainForm_FormClosed(System::Object^  sender, System::Windows::Forms::FormClosedEventArgs^  e) 
 	{

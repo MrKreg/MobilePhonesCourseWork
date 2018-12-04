@@ -93,6 +93,12 @@
     <ClInclude Include="UnitOfWork.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="UserDBRepository.h">
+      <Filter>Header Files\DBRepositories</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MobilePhonesCourseWork.DAL.cpp">

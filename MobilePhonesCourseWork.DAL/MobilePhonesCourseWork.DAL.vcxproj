@@ -151,6 +151,8 @@
     <ClInclude Include="ShopHasPhoneDBRepository.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="UnitOfWork.h" />
+    <ClInclude Include="User.h" />
+    <ClInclude Include="UserDBRepository.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
