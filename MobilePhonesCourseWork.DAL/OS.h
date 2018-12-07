@@ -21,7 +21,7 @@ namespace Entities {
 		{
 			this->name = name;
 			this->description = description;
-			this->create_year = create_year;
+			SetCreateYear(create_year);
 		}
 
 		OS(int id, String^ name, String^ description, int create_year) : OS(name, description, create_year)
@@ -66,7 +66,14 @@ namespace Entities {
 
 		void SetCreateYear(int create_year)
 		{
-			this->create_year = create_year;
+			if (create_year <= 2018)
+			{
+				this->create_year = create_year;
+			}
+			else
+			{
+				throw gcnew Exception("Wrong year!");
+			}
 		}
 	};
 }

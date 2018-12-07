@@ -69,5 +69,10 @@ namespace Entities {
 		{
 			this->website = website;
 		}
+
+		String^ ToString() override
+		{
+			return GetName();
+		}
 	};
 }

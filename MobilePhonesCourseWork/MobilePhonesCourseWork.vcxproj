@@ -101,6 +101,27 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EditCreator.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EditFeature.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EditOffer.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EditOs.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EditProcessor.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EditShop.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EditUser.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -120,6 +141,24 @@
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="EditCreator.resx">
+      <DependentUpon>EditCreator.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditFeature.resx">
+      <DependentUpon>EditFeature.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditOffer.resx">
+      <DependentUpon>EditOffer.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditOs.resx">
+      <DependentUpon>EditOs.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditProcessor.resx">
+      <DependentUpon>EditProcessor.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditShop.resx">
+      <DependentUpon>EditShop.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resX">
       <DependentUpon>Form1.h</DependentUpon>
       <SubType>Designer</SubType>

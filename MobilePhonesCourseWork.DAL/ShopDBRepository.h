@@ -74,7 +74,7 @@ namespace Repositories
 			SqlDataReader^ reader = command->ExecuteReader();
 			while (reader->Read())
 			{
-				list->Add(gcnew Shop(reader->GetInt32(0), reader->GetString(1), reader->GetDouble(2), reader->GetString(3)));
+				list->Add(gcnew Shop(reader->GetInt32(0), reader->GetString(1), (double)reader->GetDecimal(2), reader->GetString(3)));
 			}
 			reader->Close();
 			return list;

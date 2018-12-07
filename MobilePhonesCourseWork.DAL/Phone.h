@@ -161,5 +161,10 @@ namespace Entities {
 		{
 			this->osId = osId;
 		}
+
+		String^ ToString() override
+		{
+			return GetCreatorName() + " " + GetModel();
+		}
 	};
 }

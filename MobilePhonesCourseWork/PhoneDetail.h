@@ -60,6 +60,10 @@ namespace MobilePhonesCourseWork {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  RAM;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Link;
 	private: System::Windows::Forms::Button^  button1;
+	private: System::Windows::Forms::TextBox^  textBox4;
+	private: System::Windows::Forms::Label^  label5;
+	private: System::Windows::Forms::TextBox^  textBox5;
+	private: System::Windows::Forms::Label^  label6;
 
 
 	private:
@@ -91,6 +95,10 @@ namespace MobilePhonesCourseWork {
 			this->Link = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -105,7 +113,7 @@ namespace MobilePhonesCourseWork {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->ReadOnly = true;
 			this->textBox1->Size = System::Drawing::Size(143, 65);
-			this->textBox1->TabIndex = 0;
+			this->textBox1->TabIndex = 5;
 			// 
 			// label1
 			// 
@@ -128,7 +136,7 @@ namespace MobilePhonesCourseWork {
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->ReadOnly = true;
 			this->textBox2->Size = System::Drawing::Size(143, 25);
-			this->textBox2->TabIndex = 0;
+			this->textBox2->TabIndex = 6;
 			// 
 			// label2
 			// 
@@ -151,7 +159,7 @@ namespace MobilePhonesCourseWork {
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->ReadOnly = true;
 			this->textBox3->Size = System::Drawing::Size(143, 65);
-			this->textBox3->TabIndex = 0;
+			this->textBox3->TabIndex = 7;
 			// 
 			// label3
 			// 
@@ -160,7 +168,7 @@ namespace MobilePhonesCourseWork {
 			this->label3->Location = System::Drawing::Point(12, 139);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(51, 13);
-			this->label3->TabIndex = 1;
+			this->label3->TabIndex = 2;
 			this->label3->Text = L"Features:";
 			// 
 			// dataGridView1
@@ -188,8 +196,8 @@ namespace MobilePhonesCourseWork {
 			this->dataGridView1->RowHeadersVisible = false;
 			this->dataGridView1->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(600, 170);
-			this->dataGridView1->TabIndex = 2;
+			this->dataGridView1->Size = System::Drawing::Size(600, 246);
+			this->dataGridView1->TabIndex = 10;
 			// 
 			// Id
 			// 
@@ -271,20 +279,70 @@ namespace MobilePhonesCourseWork {
 			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &PhoneDetail::button1_Click);
 			// 
+			// textBox4
+			// 
+			this->textBox4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(75)),
+				static_cast<System::Int32>(static_cast<System::Byte>(81)));
+			this->textBox4->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->textBox4->ForeColor = System::Drawing::Color::White;
+			this->textBox4->Location = System::Drawing::Point(72, 210);
+			this->textBox4->Multiline = true;
+			this->textBox4->Name = L"textBox4";
+			this->textBox4->ReadOnly = true;
+			this->textBox4->Size = System::Drawing::Size(143, 41);
+			this->textBox4->TabIndex = 8;
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->ForeColor = System::Drawing::Color::White;
+			this->label5->Location = System::Drawing::Point(12, 210);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(44, 13);
+			this->label5->TabIndex = 3;
+			this->label5->Text = L"Display:";
+			// 
+			// textBox5
+			// 
+			this->textBox5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(72)), static_cast<System::Int32>(static_cast<System::Byte>(75)),
+				static_cast<System::Int32>(static_cast<System::Byte>(81)));
+			this->textBox5->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->textBox5->ForeColor = System::Drawing::Color::White;
+			this->textBox5->Location = System::Drawing::Point(72, 257);
+			this->textBox5->Multiline = true;
+			this->textBox5->Name = L"textBox5";
+			this->textBox5->ReadOnly = true;
+			this->textBox5->Size = System::Drawing::Size(143, 23);
+			this->textBox5->TabIndex = 9;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->ForeColor = System::Drawing::Color::White;
+			this->label6->Location = System::Drawing::Point(5, 257);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(64, 13);
+			this->label6->TabIndex = 4;
+			this->label6->Text = L"RAM/ROM:";
+			// 
 			// PhoneDetail
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(54)), static_cast<System::Int32>(static_cast<System::Byte>(57)),
 				static_cast<System::Int32>(static_cast<System::Byte>(63)));
-			this->ClientSize = System::Drawing::Size(826, 211);
+			this->ClientSize = System::Drawing::Size(826, 287);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->label2);
+			this->Controls->Add(this->label6);
+			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->textBox5);
+			this->Controls->Add(this->textBox4);
 			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->textBox1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
@@ -338,6 +396,8 @@ namespace MobilePhonesCourseWork {
 		{
 			textBox3->AppendText(item->GetName() + Environment::NewLine);
 		}
+		textBox4->Text = phone->GetScreenType() + Environment::NewLine + phone->GetResolution() + Environment::NewLine + phone->GetScreenSize();
+		textBox5->Text = phone->GetRAM() + "/" + phone->GetStorage() + " Gb";
 		InitializeGridView();
 	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) 

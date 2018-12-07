@@ -27,7 +27,7 @@ namespace Repositories
 			command->Parameters->Add(gcnew SqlParameter("@phone_id", shopHasPhone->GetPhoneId()));
 			command->Parameters->Add(gcnew SqlParameter("@shop_id", shopHasPhone->GetShopId()));
 			command->Parameters->Add(gcnew SqlParameter("@price", shopHasPhone->GetPrice()));
-			command->Parameters->Add(gcnew SqlParameter("@sipping_cost", shopHasPhone->GetShippingCost()));
+			command->Parameters->Add(gcnew SqlParameter("@shipping_cost", shopHasPhone->GetShippingCost()));
 			command->Parameters->Add(gcnew SqlParameter("@available", shopHasPhone->GetAvailable()));
 			if (command->ExecuteNonQuery() == 0)
 			{
@@ -42,9 +42,10 @@ namespace Repositories
 			String^ query = "UPDATE dbo.shop_has_phone SET phone_id=@phone_id, shop_id=@shop_id, price=@price, shipping_cost=@shipping_cost, available=@available WHERE id=@id";
 			SqlCommand^ command = gcnew SqlCommand(query, connection);
 			command->Parameters->Add(gcnew SqlParameter("@id", shopHasPhone->GetId()));
+			command->Parameters->Add(gcnew SqlParameter("@phone_id", shopHasPhone->GetPhoneId()));
 			command->Parameters->Add(gcnew SqlParameter("@shop_id", shopHasPhone->GetShopId()));
 			command->Parameters->Add(gcnew SqlParameter("@price", shopHasPhone->GetPrice()));
-			command->Parameters->Add(gcnew SqlParameter("@sipping_cost", shopHasPhone->GetShippingCost()));
+			command->Parameters->Add(gcnew SqlParameter("@shipping_cost", shopHasPhone->GetShippingCost()));
 			command->Parameters->Add(gcnew SqlParameter("@available", shopHasPhone->GetAvailable()));
 			if (command->ExecuteNonQuery() == 0)
 			{
@@ -101,7 +102,9 @@ namespace Repositories
 		ShopHasPhone^ GetShopHasPhoneById(int id) override
 		{
 			ShopHasPhone^ item = nullptr;
-			String^ query = "SELECT * FROM dbo.shop_has_phone WHERE dbo.shop_has_phone.id = @id";
+			String^ query = "SELECT shop_has_phone.*, phone.model, shop.name FROM shop_has_phone \
+				INNER JOIN phone ON phone.id = phone_id \
+				INNER JOIN shop ON shop.id = shop_id WHERE dbo.shop_has_phone.id = @id";
 			SqlCommand^ command = gcnew SqlCommand(query, connection);
 			command->Parameters->Add(gcnew SqlParameter("@id", id));
 			SqlDataReader^ reader = command->ExecuteReader();

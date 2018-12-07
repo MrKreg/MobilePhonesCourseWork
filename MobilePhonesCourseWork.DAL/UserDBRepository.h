@@ -32,7 +32,7 @@ namespace Repositories {
 			return true;
 		}
 
-		bool UpdateOs(User^ user)
+		bool UpdateUser(User^ user)
 		{
 			User^ item = this->GetUserByUsername(user->GetUsername());
 			if (user->GetPassword() == item->GetPassword()) {
@@ -49,7 +49,7 @@ namespace Repositories {
 			return true;
 		}
 
-		bool DeleteOs(User^ user)
+		bool DeleteUser(User^ user)
 		{
 			String^ query = "DELETE FROM dbo.users WHERE dbo.users.username = @username";
 			SqlCommand^ command = gcnew SqlCommand(query, connection);

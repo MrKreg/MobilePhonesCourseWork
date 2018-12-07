@@ -2,7 +2,6 @@
 #include "Phone.h"
 #include "IPhoneRepository.h"
 #include "Feature.h"
-#include <stdio.h>
 
 using namespace System;
 using namespace Entities;

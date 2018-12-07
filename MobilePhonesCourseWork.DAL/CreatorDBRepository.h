@@ -22,7 +22,7 @@ namespace Repositories
 
 		bool InsertCreator(Creator^ creator) override
 		{
-			String^ query = "INSERT INTO dbo.creator (name, email, owner, country) VALUES(@name,@email,@owner,@countr)";
+			String^ query = "INSERT INTO dbo.creator (name, email, owner, country) VALUES(@name,@email,@owner,@country)";
 			SqlCommand^ command = gcnew SqlCommand(query, connection);
 			command->Parameters->Add(gcnew SqlParameter("@name", creator->GetName()));
 			command->Parameters->Add(gcnew SqlParameter("@email", creator->GetEmail()));
