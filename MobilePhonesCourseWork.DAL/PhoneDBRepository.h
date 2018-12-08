@@ -22,7 +22,7 @@ namespace Repositories {
 
 		bool InsertPhone(Phone^ phone) override
 		{
-			String^ query = "INSERT INTO dbo.Phone (creator_id, model, processor_id, storage, RAM, resolution, screen_size, screen_type, os_id) VALUES(@creator_id, @model, @processor_id, @storage, @RAM, @resolution, @screen_size, @screen_type, os_id)";
+			String^ query = "INSERT INTO dbo.Phone (creator_id, model, processor_id, storage, RAM, resolution, screen_size, screen_type, os_id) VALUES(@creator_id, @model, @processor_id, @storage, @RAM, @resolution, @screen_size, @screen_type, @os_id)";
 			SqlCommand^ command = gcnew SqlCommand(query, connection);
 			command->Parameters->Add(gcnew SqlParameter("@creator_id", phone->GetCreatorId()));
 			command->Parameters->Add(gcnew SqlParameter("@model", phone->GetModel()));
@@ -32,7 +32,7 @@ namespace Repositories {
 			command->Parameters->Add(gcnew SqlParameter("@resolution", phone->GetResolution()));
 			command->Parameters->Add(gcnew SqlParameter("@screen_size", phone->GetScreenSize()));
 			command->Parameters->Add(gcnew SqlParameter("@screen_type", phone->GetScreenType()));
-			command->Parameters->Add(gcnew SqlParameter("@os_is", phone->GetOsId()));
+			command->Parameters->Add(gcnew SqlParameter("@os_id", phone->GetOsId()));
 			if (command->ExecuteNonQuery() == 0)
 			{
 				return false;
@@ -47,7 +47,7 @@ namespace Repositories {
 			{
 				return false;
 			}
-			String^ query = "UPDATE dbo.phone SET id=@id, creator_id=@creator_id, model=@model, processor_id=@processor_id, storage=@storage, RAM=@RAM, resolution=@resolution, screen_size=@screen_size, screen_type=@screen_type, os_id=@os_id WHERE id=@id";
+			String^ query = "UPDATE dbo.phone SET creator_id=@creator_id, model=@model, processor_id=@processor_id, storage=@storage, RAM=@RAM, resolution=@resolution, screen_size=@screen_size, screen_type=@screen_type, os_id=@os_id WHERE id=@id";
 			SqlCommand^ command = gcnew SqlCommand(query, connection);
 			command->Parameters->Add(gcnew SqlParameter("@id", phone->GetId()));
 			command->Parameters->Add(gcnew SqlParameter("@creator_id", phone->GetCreatorId()));
@@ -58,7 +58,7 @@ namespace Repositories {
 			command->Parameters->Add(gcnew SqlParameter("@resolution", phone->GetResolution()));
 			command->Parameters->Add(gcnew SqlParameter("@screen_size", phone->GetScreenSize()));
 			command->Parameters->Add(gcnew SqlParameter("@screen_type", phone->GetScreenType()));
-			command->Parameters->Add(gcnew SqlParameter("@os_is", phone->GetOsId()));
+			command->Parameters->Add(gcnew SqlParameter("@os_id", phone->GetOsId()));
 			if (command->ExecuteNonQuery() == 0)
 			{
 				return false;

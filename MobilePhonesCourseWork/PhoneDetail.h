@@ -347,8 +347,9 @@ namespace MobilePhonesCourseWork {
 			this->Controls->Add(this->textBox1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
 			this->Name = L"PhoneDetail";
+			this->ShowInTaskbar = false;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"PhoneDetail";
+			this->Text = L"Phone Detail";
 			this->Load += gcnew System::EventHandler(this, &PhoneDetail::PhoneDetail_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);

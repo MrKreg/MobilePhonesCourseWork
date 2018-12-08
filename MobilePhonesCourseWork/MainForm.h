@@ -2,6 +2,8 @@
 #include "UnitOfWork.h"
 #include "PhoneDetail.h"
 #include "StuffForm.h"
+#include "Form1.h"
+#include "EditPhone.h"
 
 namespace MobilePhonesCourseWork {
 
@@ -13,6 +15,7 @@ namespace MobilePhonesCourseWork {
 	using namespace System::Drawing;
 	using namespace Repositories;
 	using namespace Entities;
+	using namespace Microsoft::Office::Interop;
 
 	/// <summary>
 	/// Summary for MainForm
@@ -53,17 +56,10 @@ namespace MobilePhonesCourseWork {
 	private: System::Windows::Forms::ToolStripMenuItem^  printToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  aboutToolStripMenuItem;
 	private: System::Windows::Forms::DataGridView^  dataGridView1;
-
-
-
-
-
-
 	private: System::Windows::Forms::Panel^  panel1;
 	private: System::Windows::Forms::Label^  label1;
 	private: UnitOfWork^ uow;
 			 bool isAdmin;
-
 	private: System::Windows::Forms::CheckedListBox^  checkedListBox1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Id;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Creator;
@@ -75,8 +71,6 @@ namespace MobilePhonesCourseWork {
 	private: System::Windows::Forms::TextBox^  textBox1;
 	private: System::Windows::Forms::Label^  label2;
 			 List<Phone^>^ globalPhoneList;
-			 ToolStripLabel^ dateLabel, ^timeLabel;
-			 Timer^ timer;
 	private: System::Windows::Forms::StatusStrip^  statusStrip1;
 	private: System::Windows::Forms::ToolStripStatusLabel^  infoLabel;
 	private: System::Windows::Forms::Button^  button5;
@@ -104,6 +98,7 @@ namespace MobilePhonesCourseWork {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->saveAsExcelToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -160,14 +155,16 @@ namespace MobilePhonesCourseWork {
 			// saveAsExcelToolStripMenuItem
 			// 
 			this->saveAsExcelToolStripMenuItem->Name = L"saveAsExcelToolStripMenuItem";
-			this->saveAsExcelToolStripMenuItem->Size = System::Drawing::Size(141, 22);
+			this->saveAsExcelToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->saveAsExcelToolStripMenuItem->Text = L"Save as Excel";
+			this->saveAsExcelToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::saveAsExcelToolStripMenuItem_Click);
 			// 
 			// printToolStripMenuItem
 			// 
 			this->printToolStripMenuItem->Name = L"printToolStripMenuItem";
-			this->printToolStripMenuItem->Size = System::Drawing::Size(141, 22);
+			this->printToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->printToolStripMenuItem->Text = L"Print";
+			this->printToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::printToolStripMenuItem_Click);
 			// 
 			// aboutToolStripMenuItem
 			// 
@@ -185,6 +182,7 @@ namespace MobilePhonesCourseWork {
 			this->dataGridView1->BackgroundColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(32)),
 				static_cast<System::Int32>(static_cast<System::Byte>(34)), static_cast<System::Int32>(static_cast<System::Byte>(37)));
 			this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->dataGridView1->ClipboardCopyMode = System::Windows::Forms::DataGridViewClipboardCopyMode::EnableAlwaysIncludeHeaderText;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
 				this->Id, this->Creator,
@@ -193,7 +191,6 @@ namespace MobilePhonesCourseWork {
 			this->dataGridView1->GridColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(62)), static_cast<System::Int32>(static_cast<System::Byte>(65)),
 				static_cast<System::Int32>(static_cast<System::Byte>(71)));
 			this->dataGridView1->Location = System::Drawing::Point(0, 26);
-			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
@@ -292,6 +289,7 @@ namespace MobilePhonesCourseWork {
 			this->button3->TabIndex = 5;
 			this->button3->Text = L"Remove";
 			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &MainForm::button3_Click);
 			// 
 			// button4
 			// 
@@ -305,6 +303,7 @@ namespace MobilePhonesCourseWork {
 			this->button4->TabIndex = 5;
 			this->button4->Text = L"Update";
 			this->button4->UseVisualStyleBackColor = false;
+			this->button4->Click += gcnew System::EventHandler(this, &MainForm::button4_Click);
 			// 
 			// button2
 			// 
@@ -318,6 +317,7 @@ namespace MobilePhonesCourseWork {
 			this->button2->TabIndex = 5;
 			this->button2->Text = L"Add";
 			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &MainForm::button2_Click);
 			// 
 			// button1
 			// 
@@ -357,7 +357,7 @@ namespace MobilePhonesCourseWork {
 			this->checkedListBox1->Name = L"checkedListBox1";
 			this->checkedListBox1->Size = System::Drawing::Size(134, 90);
 			this->checkedListBox1->TabIndex = 3;
-			this->checkedListBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &MainForm::checkedListBox1_SelectedIndexChanged);
+			this->checkedListBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &MainForm::textBox1_TextChanged);
 			// 
 			// label2
 			// 
@@ -408,11 +408,12 @@ namespace MobilePhonesCourseWork {
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->menuStrip1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MainMenuStrip = this->menuStrip1;
 			this->MaximizeBox = false;
 			this->Name = L"MainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"MainForm";
+			this->Text = L"Phones";
 			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &MainForm::MainForm_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
 			this->menuStrip1->ResumeLayout(false);
@@ -476,11 +477,6 @@ namespace MobilePhonesCourseWork {
 	{
 		Application::Exit();
 	}
-
-	private: System::Void checkedListBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) 
-	{
-		CreatorFilter(globalPhoneList);
-	}
 	private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) 
 	{
 		InitializeGridView(uow->Phone()->GetPhoneByName(textBox1->Text));
@@ -496,6 +492,79 @@ namespace MobilePhonesCourseWork {
 	{
 		StuffForm^ staff = gcnew StuffForm(uow);
 		staff->ShowDialog();
+	}
+	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+		EditPhone^ form = gcnew EditPhone(uow);
+		form->ShowDialog();
+		String^ save = textBox1->Text;
+		textBox1->Text = "054506";
+		textBox1->Text = save;
+	}
+	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
+		EditPhone^ form = gcnew EditPhone(uow, System::Convert::ToInt32(dataGridView1->Rows[dataGridView1->CurrentCell->RowIndex]->Cells[0]->Value));
+		form->ShowDialog();
+		String^ save = textBox1->Text;
+		textBox1->Text = "054506";
+		textBox1->Text = save;
+	}
+	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+		uow->Phone()->DeletePhone(uow->Phone()->GetPhoneById(System::Convert::ToInt32(dataGridView1->Rows[dataGridView1->CurrentCell->RowIndex]->Cells[0]->Value)));
+		String^ save = textBox1->Text;
+		textBox1->Text = "054506";
+		textBox1->Text = save;
+	}
+	private: System::Void saveAsExcelToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		SaveFileDialog^ sfd = gcnew SaveFileDialog();
+		sfd->Filter = "Excel Documents (*.xls)|*.xls";
+		sfd->FileName = "Phones.xls";
+		if (sfd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			dataGridView1->SelectAll();
+			DataObject^ dataObj = dataGridView1->GetClipboardContent();
+			if (dataObj != nullptr)
+			{
+				Clipboard::SetDataObject(dataObj);
+			}
+			Excel::Application^ xlExcel;
+			Excel::Workbook^ xlWorkBook;
+			Excel::Worksheet^ xlWorkSheet;
+			Object^ misValue = System::Reflection::Missing::Value;
+			xlExcel = gcnew Excel::ApplicationClass();
+			xlExcel->DisplayAlerts = false;
+			xlExcel->Visible = true;
+			xlWorkBook = xlExcel->Workbooks->Add(misValue);
+			xlWorkSheet = (Excel::Worksheet^)xlWorkBook->Worksheets["Аркуш1"];
+			Excel::Range^ CR = (Excel::Range^)xlWorkSheet->Cells[1, 1];
+			CR->Select();
+			xlWorkSheet->PasteSpecial(CR, Type::Missing, Type::Missing, Type::Missing, Type::Missing, Type::Missing, true);
+			xlWorkBook->SaveAs(sfd->FileName, Excel::XlFileFormat::xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel::XlSaveAsAccessMode::xlExclusive, misValue, misValue, misValue, misValue, misValue);
+			xlWorkBook->Close(true, misValue, misValue);
+			xlExcel->Quit();
+			Clipboard::Clear();
+			dataGridView1->ClearSelection();
+			if (System::IO::File::Exists(sfd->FileName))
+			{
+				System::Diagnostics::Process::Start(sfd->FileName);
+			}
+		}
+	}
+	private: System::Void printToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		OpenFileDialog^ ofd = gcnew OpenFileDialog();
+		ofd->Filter = "Excel Documents (*.xls)|*.xls";
+		if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK && System::IO::File::Exists(ofd->FileName))
+		{
+			Excel::Application^ xlExcel = gcnew Excel::ApplicationClass();
+			Excel::Workbook^ xlWorkbook = xlExcel->Workbooks->Open(
+				"C:\\Users\\Taras\\Desktop\\Phones.xls",
+				Type::Missing, Type::Missing, Type::Missing, Type::Missing, Type::Missing,
+				Type::Missing, Type::Missing, Type::Missing, Type::Missing, Type::Missing,
+				Type::Missing, Type::Missing, Type::Missing, Type::Missing);
+			Excel::Worksheet^ xlWorksheet = (Excel::Worksheet^)xlWorkbook->Worksheets["Аркуш1"];
+			xlWorksheet->PrintOut(Type::Missing, Type::Missing, Type::Missing, Type::Missing,
+				Type::Missing, Type::Missing, Type::Missing, Type::Missing);
+			xlWorkbook->Close(false, Type::Missing, Type::Missing);
+			xlExcel->Quit();
+		}
 	}
 };
 }

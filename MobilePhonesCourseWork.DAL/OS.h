@@ -75,5 +75,10 @@ namespace Entities {
 				throw gcnew Exception("Wrong year!");
 			}
 		}
+
+		String^ ToString() override
+		{
+			return this->name;
+		}
 	};
 }

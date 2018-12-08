@@ -146,6 +146,7 @@ namespace MobilePhonesCourseWork {
 			this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(111)), static_cast<System::Int32>(static_cast<System::Byte>(113)),
 				static_cast<System::Int32>(static_cast<System::Byte>(117)));
 			this->button2->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->button2->DialogResult = System::Windows::Forms::DialogResult::Cancel;
 			this->button2->FlatAppearance->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(54)),
 				static_cast<System::Int32>(static_cast<System::Byte>(57)), static_cast<System::Int32>(static_cast<System::Byte>(63)));
 			this->button2->FlatAppearance->BorderSize = 0;
@@ -195,6 +196,7 @@ namespace MobilePhonesCourseWork {
 			this->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(24)), static_cast<System::Int32>(static_cast<System::Byte>(161)),
 				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(5, 4, 5, 4);
 			this->Name = L"Form1";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;

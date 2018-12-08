@@ -113,6 +113,9 @@
     <ClInclude Include="EditOs.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="EditPhone.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="EditProcessor.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -153,11 +156,17 @@
     <EmbeddedResource Include="EditOs.resx">
       <DependentUpon>EditOs.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditPhone.resx">
+      <DependentUpon>EditPhone.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditProcessor.resx">
       <DependentUpon>EditProcessor.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditShop.resx">
       <DependentUpon>EditShop.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditUser.resx">
+      <DependentUpon>EditUser.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resX">
       <DependentUpon>Form1.h</DependentUpon>
@@ -172,6 +181,24 @@
     <EmbeddedResource Include="StuffForm.resx">
       <DependentUpon>StuffForm.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core.2.8.dll">
+      <Guid>2df8d04c-5bfa-101b-bde5-00aa0044de52</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>false</Isolated>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Excel.1.9.dll">
+      <Guid>00020813-0000-0000-c000-000000000046</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>false</Isolated>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

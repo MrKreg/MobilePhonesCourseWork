@@ -80,5 +80,10 @@ namespace Entities {
 		{
 			this->maker = maker;
 		}
+
+		String^ ToString() override
+		{
+			return this->name;
+		}
 	};
 }

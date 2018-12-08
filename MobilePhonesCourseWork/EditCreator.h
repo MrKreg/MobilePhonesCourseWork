@@ -211,6 +211,7 @@ namespace MobilePhonesCourseWork {
 			this->ForeColor = System::Drawing::Color::White;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
 			this->Name = L"EditCreator";
+			this->ShowInTaskbar = false;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->ResumeLayout(false);
 			this->PerformLayout();

@@ -67,6 +67,7 @@ namespace MobilePhonesCourseWork {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(StuffForm::typeid));
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
@@ -206,10 +207,11 @@ namespace MobilePhonesCourseWork {
 			this->Controls->Add(this->dataGridView1);
 			this->ForeColor = System::Drawing::Color::Black;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MaximizeBox = false;
 			this->Name = L"StuffForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"StuffForm";
+			this->Text = L"Stuff";
 			this->Load += gcnew System::EventHandler(this, &StuffForm::StuffForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
@@ -450,6 +452,12 @@ namespace MobilePhonesCourseWork {
 			form->ShowDialog();
 			break;
 		}
+		case 6:
+		{
+			EditUser^ form = gcnew EditUser(uow, username);
+			form->ShowDialog();
+			break;
+		}
 		}
 		CallSelected();
 	}
@@ -481,6 +489,11 @@ namespace MobilePhonesCourseWork {
 		}
 		case 5: {
 			EditOffer^ form = gcnew EditOffer(uow);
+			form->ShowDialog();
+			break;
+		}
+		case 6: {
+			EditUser^ form = gcnew EditUser(uow);
 			form->ShowDialog();
 			break;
 		}

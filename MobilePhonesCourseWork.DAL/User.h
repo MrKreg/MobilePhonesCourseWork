@@ -46,14 +46,14 @@ namespace Entities {
 			this->password = EncodeTo64(password);
 		}
 
-		String^ EncodeTo64(String^ toEncode)
+		static String^ EncodeTo64(String^ toEncode)
 		{
 			array<Byte>^ toEncodeBytes = System::Text::ASCIIEncoding::ASCII->GetBytes(toEncode);
 			String^ returnValue = System::Convert::ToBase64String(toEncodeBytes);
 			return returnValue;
 		}
 
-		String^ DecodeFrom64(String^ encodedData)
+		static String^ DecodeFrom64(String^ encodedData)
 		{
 			array<Byte>^ encodedDataAsBytes= System::Convert::FromBase64String(encodedData);
 			String^ returnValue = System::Text::ASCIIEncoding::ASCII->GetString(encodedDataAsBytes);

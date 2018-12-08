@@ -189,6 +189,7 @@ namespace MobilePhonesCourseWork {
 			this->Controls->Add(this->label1);
 			this->ForeColor = System::Drawing::Color::White;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
+			this->MaximizeBox = false;
 			this->Name = L"EditOs";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->ResumeLayout(false);
