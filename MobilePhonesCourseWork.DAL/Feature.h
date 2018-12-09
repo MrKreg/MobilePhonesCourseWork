@@ -57,5 +57,10 @@ namespace Entities {
 		{
 			this->usage = usage;
 		}
+
+		String^ ToString() override
+		{
+			return this->GetName();
+		}
 	};
 }

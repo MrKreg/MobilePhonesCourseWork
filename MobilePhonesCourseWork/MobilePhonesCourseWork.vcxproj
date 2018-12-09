@@ -113,6 +113,9 @@
     <ClInclude Include="EditOs.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="EditPHF.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="EditPhone.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -123,6 +126,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="EditUser.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FeatureManager.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Form1.h">
@@ -156,6 +162,9 @@
     <EmbeddedResource Include="EditOs.resx">
       <DependentUpon>EditOs.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditPHF.resx">
+      <DependentUpon>EditPHF.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditPhone.resx">
       <DependentUpon>EditPhone.h</DependentUpon>
     </EmbeddedResource>
@@ -167,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditUser.resx">
       <DependentUpon>EditUser.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureManager.resx">
+      <DependentUpon>FeatureManager.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resX">
       <DependentUpon>Form1.h</DependentUpon>

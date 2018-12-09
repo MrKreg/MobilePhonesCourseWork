@@ -77,6 +77,12 @@
     <ClInclude Include="EditPhone.h">
       <Filter>Header Files\Edit Forms</Filter>
     </ClInclude>
+    <ClInclude Include="FeatureManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EditPHF.h">
+      <Filter>Header Files\Edit Forms</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc">
@@ -118,6 +124,9 @@
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="EditPhone.resx">
+      <Filter>Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureManager.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
   </ItemGroup>

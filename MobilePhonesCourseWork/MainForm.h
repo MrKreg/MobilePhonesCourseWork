@@ -2,7 +2,6 @@
 #include "UnitOfWork.h"
 #include "PhoneDetail.h"
 #include "StuffForm.h"
-#include "Form1.h"
 #include "EditPhone.h"
 
 namespace MobilePhonesCourseWork {
@@ -155,14 +154,14 @@ namespace MobilePhonesCourseWork {
 			// saveAsExcelToolStripMenuItem
 			// 
 			this->saveAsExcelToolStripMenuItem->Name = L"saveAsExcelToolStripMenuItem";
-			this->saveAsExcelToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->saveAsExcelToolStripMenuItem->Size = System::Drawing::Size(141, 22);
 			this->saveAsExcelToolStripMenuItem->Text = L"Save as Excel";
 			this->saveAsExcelToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::saveAsExcelToolStripMenuItem_Click);
 			// 
 			// printToolStripMenuItem
 			// 
 			this->printToolStripMenuItem->Name = L"printToolStripMenuItem";
-			this->printToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->printToolStripMenuItem->Size = System::Drawing::Size(141, 22);
 			this->printToolStripMenuItem->Text = L"Print";
 			this->printToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::printToolStripMenuItem_Click);
 			// 
@@ -171,6 +170,7 @@ namespace MobilePhonesCourseWork {
 			this->aboutToolStripMenuItem->Name = L"aboutToolStripMenuItem";
 			this->aboutToolStripMenuItem->Size = System::Drawing::Size(52, 20);
 			this->aboutToolStripMenuItem->Text = L"About";
+			this->aboutToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::aboutToolStripMenuItem_Click);
 			// 
 			// dataGridView1
 			// 
@@ -565,6 +565,9 @@ namespace MobilePhonesCourseWork {
 			xlWorkbook->Close(false, Type::Missing, Type::Missing);
 			xlExcel->Quit();
 		}
+	}
+	private: System::Void aboutToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		MessageBox::Show("Created by Taras Sheketa at 2018");
 	}
 };
 }

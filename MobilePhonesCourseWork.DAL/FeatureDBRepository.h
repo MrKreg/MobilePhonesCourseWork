@@ -125,6 +125,46 @@ namespace Repositories
 			return list;
 		}
 
+		List<Feature^>^ GetMissedFeatureByPhoneId(int phone_id)
+		{
+			List<Feature^>^ list = gcnew List<Feature^>();
+			String^ query = "SELECT * FROM features WHERE id not in (SELECT features_id FROM phone_has_features WHERE phone_id = @phone_id)";
+			SqlCommand^ command = gcnew SqlCommand(query, connection);
+			command->Parameters->Add(gcnew SqlParameter("@phone_id", phone_id));
+			SqlDataReader^ reader = command->ExecuteReader();
+			while (reader->Read())
+			{
+				list->Add(gcnew Feature(reader->GetInt32(0), reader->GetString(1), reader->GetString(2)));
+			}
+			reader->Close();
+			return list;
+		}
+
+		bool AddFeatureByPhoneId(int phone_id, int feature_id)
+		{
+			String^ query = "INSERT INTO dbo.phone_has_features (phone_id, features_id) VALUES(@phone_id,@features_id)";
+			SqlCommand^ command = gcnew SqlCommand(query, connection);
+			command->Parameters->Add(gcnew SqlParameter("@phone_id", phone_id));
+			command->Parameters->Add(gcnew SqlParameter("@features_id", feature_id));
+			if (command->ExecuteNonQuery() == 0)
+			{
+				return false;
+			}
+			return true;
+		}
+
+		bool RemoveFeatureByPhoneId(int phone_id, int feature_id)
+		{
+			String^ query = "DELETE FROM phone_has_features WHERE phone_id = @phone_id AND features_id = @features_id";
+			SqlCommand^ command = gcnew SqlCommand(query, connection);
+			command->Parameters->Add(gcnew SqlParameter("@phone_id", phone_id));
+			command->Parameters->Add(gcnew SqlParameter("@features_id", feature_id));
+			if (command->ExecuteNonQuery() == 0)
+			{
+				return false;
+			}
+			return true;
+		}
 	private:
 		SqlConnection^ connection;
 	};

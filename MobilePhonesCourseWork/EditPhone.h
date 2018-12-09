@@ -1,5 +1,6 @@
 #pragma once
 #include "UnitOfWork.h"
+#include "FeatureManager.h"
 namespace MobilePhonesCourseWork {
 
 	using namespace System;
@@ -18,9 +19,6 @@ namespace MobilePhonesCourseWork {
 		EditPhone(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
 		}
 		EditPhone(UnitOfWork^ uow)
 		{
@@ -28,6 +26,8 @@ namespace MobilePhonesCourseWork {
 			this->uow = uow;
 			label1->Text = "New phone";
 			InitCombo();
+			label12->Hide();
+			button1->Hide();
 		}
 		EditPhone(UnitOfWork^ uow, int id)
 		{
@@ -85,6 +85,8 @@ namespace MobilePhonesCourseWork {
 			 int id = -1;
 	private: System::Windows::Forms::Label^  label11;
 	private: System::Windows::Forms::MaskedTextBox^  maskedTextBox5;
+	private: System::Windows::Forms::Label^  label12;
+	private: System::Windows::Forms::Button^  button1;
 
 	private:
 		/// <summary>
@@ -122,6 +124,8 @@ namespace MobilePhonesCourseWork {
 			this->comboBox3 = (gcnew System::Windows::Forms::ComboBox());
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->maskedTextBox5 = (gcnew System::Windows::Forms::MaskedTextBox());
+			this->label12 = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// button2
@@ -337,6 +341,29 @@ namespace MobilePhonesCourseWork {
 			this->maskedTextBox5->TabIndex = 17;
 			this->maskedTextBox5->ValidatingType = System::Int32::typeid;
 			// 
+			// label12
+			// 
+			this->label12->AutoSize = true;
+			this->label12->Location = System::Drawing::Point(217, 181);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(43, 13);
+			this->label12->TabIndex = 10;
+			this->label12->Text = L"Feature";
+			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(66)), static_cast<System::Int32>(static_cast<System::Byte>(70)),
+				static_cast<System::Int32>(static_cast<System::Byte>(77)));
+			this->button1->FlatAppearance->BorderSize = 0;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->Location = System::Drawing::Point(286, 178);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(118, 20);
+			this->button1->TabIndex = 22;
+			this->button1->Text = L"Manage";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &EditPhone::button1_Click);
+			// 
 			// EditPhone
 			// 
 			this->AcceptButton = this->button2;
@@ -345,6 +372,7 @@ namespace MobilePhonesCourseWork {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(54)), static_cast<System::Int32>(static_cast<System::Byte>(57)),
 				static_cast<System::Int32>(static_cast<System::Byte>(63)));
 			this->ClientSize = System::Drawing::Size(417, 247);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->maskedTextBox4);
 			this->Controls->Add(this->maskedTextBox5);
 			this->Controls->Add(this->maskedTextBox3);
@@ -354,6 +382,7 @@ namespace MobilePhonesCourseWork {
 			this->Controls->Add(this->comboBox2);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->button2);
+			this->Controls->Add(this->label12);
 			this->Controls->Add(this->label10);
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->label8);
@@ -410,6 +439,10 @@ namespace MobilePhonesCourseWork {
 		{
 			MessageBox::Show("Fill all fields!");
 		}
+	}
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		FeatureManager^ form = gcnew FeatureManager(uow, id);
+		form->ShowDialog();
 	}
 };
 }
